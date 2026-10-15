@@ -25,3 +25,7 @@ def test_chart_get_row_found_and_missing():
 def test_chart_rejects_duplicate_labels():
     with pytest.raises(ValueError):
         SizeChart(rows=(SizeChartRow("M"), SizeChartRow("M")))
+
+def test_row_requires_at_least_one_range():
+    with pytest.raises(ValueError):
+        SizeChartRow("M")

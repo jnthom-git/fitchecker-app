@@ -21,6 +21,10 @@ class SizeChartRow:
     waist: MeasurementRange | None = None
     hips: MeasurementRange | None = None
 
+    def __post_init__(self) -> None:
+        if self.chest is None and self.waist is None and self.hips is None:
+            raise ValueError(f"SizeChartRow '{self.label}' must have at least one measurement range defined")
+        
 @dataclass(frozen=True)
 class SizeChart:
 
